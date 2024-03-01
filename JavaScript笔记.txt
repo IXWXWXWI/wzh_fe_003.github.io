@@ -1,0 +1,159 @@
+JavaScript
+
+
+
+运行在客户端的脚本语言
+浏览器=渲染引擎+JS引擎
+JS逐行解释执行
+JS=javascript语法+页面文档对象模型+浏览器对象模型=ECMAScript+DOM+BOM
+
+行内式					如onclick
+内嵌式					<script></script>
+外部式					<script src="js文件路径"></script>
+
+
+
+
+
+ECMAScript语法
+
+
+输入输出
+	prompt				输入框				prompt('请输入您的年龄');				字符型
+	alert					弹出警示框			alert('计算的结果是');
+	console				控制台输出			console.log('F12能看到的');		console.dir(timer) 元素对象的详细信息
+
+变量
+	var					声明变量				var a;			未赋值时为undefined，变量名的特殊符号允许$和_
+
+数据类型					数据类型在变量赋值时确定，且变量的数据类型可以变化
+	Number				整型和浮点			0				最大值Number.MAX_VALUE，最小值Number.MIN_VALUE，无穷大Infinity，非数字NaN
+	Boolean				true和false			false
+	String				字符串				""				换行\n，tab为\t
+	Undefined			未声明				undefined
+	Null					空值					null
+
+	isNaN()				判断是否为非数字		返回false或true
+	.length				获取字符串长度
+	+					字符串拼接			'a'+'b'='ab' / 'a'+123='a123'
+	typeof()				获取变量数据类型		
+	String()				转换为字符串
+	parseInt()				转换为整型
+	parseFloat()			转换为浮点型
+	Number()				转换为数字
+	- * /					转换为数字			'123'-0=123 / '123'-'120'=3
+	Boolean()				转换为布尔型
+
+运算符					浮点数有精度问题	
+	/					除法，不是整除
+	===					全等，值和数据类型都相同
+	!==					不全等
+
+分支						if和?:与c语言相同，switch中的数值判断是全等
+
+循环						for和while和dowhile与c语言相同
+	for in				对数组和对象遍历		for(变量 in 对象){}
+
+数组
+	new					创建一个新的空数组		var 数组名 = new Array();
+	[]					创建一个数组			var 数组名 = [];					var 数组名 = [1,'asd',true,3.14];	
+	.length				获取数组长度			数组名.length
+	
+	新增元素				修改.length / 用索引号追加
+
+函数
+	function				声明: function 函数名 (形参1 , 形参2){}		调用: 函数名 (实参1 , 实参2);
+						声明: var 函数名=function(){};
+	arguments			arguments存储了所有传递过来实参			function fn(){console.log(arguments);}		fn(1,2,3);
+						arguments是伪数组						伪数组有length属性，按照索引存储，无法pop和push
+
+对象						一组无序的事物的集合，由属性和方法组成	自定义对象，内置对象，浏览器对象
+	创建对象
+		用字面量创建		var stu={uname: '姓名', age: 18, sex: '男', fun: function(){}}
+		用new创建		var stu=new Object();		stu.uname='姓名';	stu.age=18;
+		用函数创建		function Stu(uname , age) { this.uname = uname; this.age = age;}		var stu1 = new Stu('姓名' , 18);
+	调用
+		对象名.属性名		stu.age 
+		对象名['属性名']	stu['age']
+		对象名.方法名()		stu.fun()
+	遍历
+		for in			for (var k in stu){ console.log(k); }			得到属性名
+						for (var k in stu){ console.log(obj[k])}		得到属性值
+	内置对象
+		Math			
+		Date
+		Array
+		String
+
+作用域
+	全局作用域			整个script标签							未声明的变量为全局变量				浏览器关闭时释放
+	局部作用域			函数内部								函数的形参也是局部变量				程序执行完毕释放
+	
+预解析					预解析时把所有的var和function提升到当前作用域的最前面，之后代码执行
+	变量预解析			只提升变量声明，不提升变量赋值
+	函数预解析			提升函数声明
+
+
+
+
+
+Web APIs					Web APIs=DOM+BOM
+
+
+DOM
+	文档					一个页面=一个文档
+	元素					页面中所有标签，element
+	节点					网页中所有内容，node
+
+获取元素
+
+
+	getElementById()			<div id="time"></div>
+							var timer = document.getElementById('time');						参数：字符串，返回值：相应对象或null
+							console.log(timer);
+	
+
+	getElementsByTagName()	var lis = document.getElementByTagName('li');						参数：字符串，返回值：伪数组
+							console.log(lis[0]);
+
+							var a =document.getElementByTagName('ul');
+							var b =a[0].getElementByTagName('li');
+							console.log(b[0]);
+
+							var a =document.getElementById('abc');
+							var b =a[0].getElementByTagName('li');
+							console.log(b[0]);
+
+
+	getElementsByClassName()	document.getElementsByClassName('类名');
+	
+
+	querySelector()			document.querySelector('选择器');									根据选择器返回第一个元素对象
+	
+	querySelectorAll()																		根据选择器返回所有元素对象
+
+	
+	获取body元素				document.body;
+	获取html元素				document.documentElement
+
+
+
+事件				事件=事件源+事件类型+事件处理程序						<button id="btn"></button>
+																	var btn = document.getElementById('btn');
+																	btn.onclick = function(){ alert('12321') };
+
+操作元素			
+	改变元素内容
+		element.innerText				div.innerText = 字符串;				不识别html标签，去除空格换行
+		element.innerHTML											识别html标签，不去除空格换行
+	改变元素属性														font-size = fontSize
+	改变元素样式
+		element.style
+
+
+
+
+
+
+
+

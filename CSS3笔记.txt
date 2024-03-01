@@ -1,0 +1,221 @@
+CSS3
+
+
+
+CSS引用方式
+内部样式表(嵌入式)		写在html中		<style></style>								控制一个页面
+行内样式表(行内式)		写在单句中		<p style="color: red;"></p>						控制一个标签
+外部样式表(链接式)		写在css文件中		<link rel="stylesheet" href="css文件路径">			控制多个页面，常用
+权重：行内>内部>外部
+
+
+
+
+width				宽度				width: 100px;
+height				高度				height: 100px;
+list-style				列表样式			list-style: none;
+
+字体
+font-style				字体样式(斜体)		font-style: italic;								normal / italic
+font-weight			字体粗细			font-weight: bold;								normal(400) / bold(700) / bolder / lighter / number
+font-size				字体大小			font-size: 12px;
+font-family			字体系列			font-family: 'Microsoft YaHei' , Times , serif;
+					复合属性			font: font-style font-weight font-size/line-height font-family
+									font: italic 700 16px/20px 'Microsoft YaHei';
+									font: 16px 'Microsoft YaHei';
+
+文本
+color				颜色				color: red;									red / #ff0000 / rgb(255,0,0)
+text-align				水平对齐方式		text-align: center;								left / right / center
+text-decoration		装饰文本			text-decoration: underline;						none / underline / overline / line-through
+text-indent			第一行缩进		text-indent: 10px;								10px / 2em (em是1个文字大小)
+line-height			行间距			line-height: 26px;								行间距=上间距+文本高度+下间距 / 数值无单位为字体大小的倍数
+
+背景
+background-color		背景颜色			background-color: red;							color颜色 / transparent透明
+background-image		背景图片			background-image: url(img.jpg);					none / url
+background-repeat		背景平铺			background-repeat: no-repeat;					no-repeat / repeat / repeat-x / repeat-y
+background-position	背景位置			background-position: center top;					center/top/bottom/left/right或百分比/数值(x,y)
+background-attachment背景固定			background-attachment: fixed; 					scroll(滚动) / fixed(固定)
+					复合属性			background: 颜色 图片 平铺 滚动 位置;
+					颜色透明			background: rgba(255, 0, 0, 0.3)					a为透明度0-1，0为透明
+
+
+
+
+
+盒子模型								边框、外边距、内边距、实际内容					border、margin、padding、content
+
+	border		边框				
+				粗细、样式、颜色		border-width、border-style、border-color			样式none、solid实线、dashed虚线、dotted点线
+				复合					border: 1px solid red;
+				边框分开				border-top: 1px solid red;
+				表格边框合并			border-collapse: collapse
+				圆角					border-radius: 10px;							10px为半径
+									border-radius: 左上角 右上角 右下角 左下角
+
+	padding		内边距				内边距会增大盒子，但若盒子没指定宽，则对应的宽不会增大
+				上、下、左、右		padding-top、padding-bottom、padding-left、padding-right
+				复合					padding: 上下左右; / padding: 上下 左右; / padding: 上 左右 下; / padding: 上 右 下 左;
+
+	margin		外边距
+				上、下、左、右、auto	略											text-align: center; 为水平居中，行内元素或行内块元素
+				复合					略											margin: 0 auto; 为水平居中，块元素
+				合并					若父元素和子元素都有上外边距，则父元素有较大的上外边距，子元素无上外边距，浮动盒子没有
+									解决方法：父元素添加上边框 / 添加上内边距 / 添加overflow: hidden(推荐);
+
+				清除内外边距			* {padding: 0; margin: 0;} 
+
+	其他			盒子阴影				box-shadow: h-shadow v-shadow blur spread color inset;
+									h-shadow		水平阴影(必需)					px
+									v-shadow		垂直阴影(必需)					px
+									blur				模糊距离						px
+									spread			阴影尺寸						px
+									color			阴影颜色						
+									inset				内部 / 外部					不写默认外部outset，内部inset
+			
+				文字阴影				text-shadow: h-shadow v-shadow blur color;				
+
+
+
+
+浮动									改变布局方式
+	float								float: 属性值;									left / right / none
+	clear			清除浮动				clear: 属性值									left / right / both
+		1、额外标签法					在浮动元素末尾添加一个空标签，空标签为块级元素		<div style="clear: both;"></div>
+		2、overflow					给父元素添加overflow							hidden / auto / scroll
+		3、:after伪元素法				给父元素添加:after
+										.clearfix:after {content: ""; display: block; height: 0; clear: both; visibility: hidden;}
+										.clearfix {*zoom: 1;}
+
+		4、双伪元素法						.clearfix:before,.clear:after {content: ""; display: table;}
+										.clearfix:after {clear: both;}
+										.clearfix {*zoom: 1;}
+	浮动特性							
+		1、脱离标准流
+		2、一行显示，顶部对齐
+		3、有行内块特性
+
+
+
+
+
+定位									让盒子自由移动并压住其他盒子					定位=定位模式+边偏移
+	position		定位模式				position:属性值;								static静态 / relative相对 / absolute绝对 / fixed固定
+				边偏移				top / bottom / left / right: 属性值;					top / bottom / left / right
+		静态定位						position: static;								无定位
+		相对定位						position: relative;								相对于原来的位置，不脱离标准流
+		绝对定位						position: absolute;								相对于最近一级父元素，父元素不为标准流或浮动，脱离标准流
+		固定定位						position: fixed;								固定到浏览器可视位置，脱离标准流
+		粘性定位						position: sticky;								相对与固定的混合，必须有top等属性，不脱离标准流
+		绝对和固定居中				left: 50%; margin-left: -100px;					不能使用margin: 0 auto;		
+	z-index		叠放顺序				z-index: 1;									数值越大，盒子越上；数值相同，后来在上；定位才有
+	特性
+		1、行内元素添加绝对或固定定位，可以直接设置高度和宽度	
+		2、块元素添加绝对或固定定位，如果不设置高度宽度，默认大小为内容大小
+		3、无外边距合并问题
+		4、浮动会压住盒子，不压住文字图片；定位会压住所有内容
+
+
+
+
+
+显示与隐藏
+	display		设置元素如何显示		display: none;									none / block / inline，隐藏后不占有位置
+	visibility							visibility: visible;								hidden / visible，隐藏后仍占有位置
+	overflow		溢出部分的显示		overflow: hidden;								visible / hidden / scroll / auto
+
+
+
+
+
+基础选择器
+	标签选择器		选择所有对应标签			标签名 {属性1: 属性值1; 属性2: 属性值2}
+	类选择器			单独选择标签中的几个		<div class="red">红色</div>		.red {color: red;}
+	id选择器			只能调用一次				<div id="red">红色</div>			#red {color: red;}
+	通配符选择器		选择所有					* {color: red}
+
+复合选择器
+	后代选择器		选择父元素中的子元素		ul li {color: red;}
+	子选择器			选择最近一级的子元素		.red>a {color: red;}
+	并集选择器		选择多组标签				div , p {color: red;}	
+	伪类选择器
+		链接伪类选择器
+			a:link		未被访问的链接		a:link {color: red;}
+			a:visited		已被访问的链接		a:visited {color: red;}
+			a:hover		鼠标停留的链接		a:hover {color: red;}
+			a:active		正在活动的链接		a:active {color: red;}
+		focus伪类选择器
+			input:focus	光标所在的表单		input:focus {color: red;}
+
+
+
+
+
+元素显示模式
+html元素分为块元素和行内元素
+块元素				h1，p，div，ul，ol，li等	独占一行，高度宽度行间距内边距可控制，宽度默认所处容器的100%，可放行内元素和块元素(p和h1不行)
+行内元素				a，strong，span等			一行多个，高宽无法直接设置，宽度是内容宽度，可放文本和行内元素(a里不能放a，但可放块元素)
+特殊					img，input，td等			一行多个但有缝隙，宽度是内容的宽度，高度宽度行间距内边距可控制
+显示模式转换			增加a的范围				a {display: block;}  /  div {display: inline;}  /  span {display: inline-block;}
+
+
+
+
+
+CSS特性
+层叠性				样式出现冲突时，后面覆盖前面
+继承性				子标签继承父标签某些样式(颜色，文本)
+优先级				多个选择器时出现，继承 < * < 元素 < 类 / 伪类 < ID < 行内 < !important			在属性值后面加!important
+					a链接有系统指定的样式，继承 < 优先级 < *
+					复合选择器中权重叠加，不会进位			li为0001，ul li为0001+0001=0002		因此ul li > li
+														a:hover为0001+0010=0011
+					继承 / *：0000		元素：0001	类 / 伪类：0010	ID：0100		行内：1000	!important：无穷
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

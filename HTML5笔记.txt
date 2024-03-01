@@ -1,0 +1,156 @@
+HTML5
+
+
+
+<html></html>
+<head></head>
+<title></title>
+<body></body>
+
+<!DOCTYPE>	文档类型声明								<!DOCTYPE html>
+lang			语言种类		en英文，zh-CN中文				<html lang="zh-CN"> 
+charset		字符集		GB2312、BIG5、GBK、UTF-8		<meta charset="UTF-8">
+
+<h1>-<h6>	标题标签		<h1></h1>
+<p>			段落标签		<p></p>
+<br>		换行			<br>
+
+<strong>或<b>	加粗			<strong></strong>
+<em>或<i>		倾斜			<em></em>
+<del>或<s>		删除线		<del></del>
+<ins>或<u>		下划线		<ins></ins>
+
+<div>	分区，一行一个		<div></div>
+<span>	分区，一行多个		<span></span>
+
+<img>	图像标签
+src		图片路径	图像文件的路径和文件名				<img src="图像URL">
+相对路径	/下一级	../上一级
+绝对路径	\
+alt		文本		替换文本，图像无法显示时的文字		<img src="图像URL" alt="无法显示">
+title		文本		提示文本，鼠标放到图片上时显示		<img src="图像URL" title="这是图片">
+width	像素		宽度								<img src="图像URL" width="500">
+height	像素		高度								<img src="图像URL" height="500">
+border	像素		边框粗细，少见					<img src="图像URL" border="15">
+
+<a>		超链接标签
+href		目标地址
+target	打开方式		_self默认值，_blank新窗口打开	<a href="目标地址" target="打开方式"></a>
+外部链接		<a href="http://www.baidu.com">百度</a>
+内部链接		<a href="index.html">首页</a>
+空链接		<a href="#">首页</a>
+下载链接		<a href="img.zip">下载</a>
+网页元素链接	<a href="http://www.baidu.com"><img src="img.jpg"></a>
+锚点链接		<a href="#f1">123</a>		<h1 id="f1">123</h1>
+
+注释			<!--这是一个注释-->
+空格&nbsp;
+小于号&lt;
+大于号&gt;
+
+
+
+
+
+<table>		定义表格的标签		<table></table>
+<tr>			行					<tr></tr>
+<td>		单元格				<td></td>
+<th>		表头，加粗居中		<th></th>
+
+<thead>		表格头部				<thead></thead>
+<tbody>		表格主体				<tbody></tbody>
+
+合并单元格
+rowspan		跨行合并，目标单元格最上侧		<td rowspan="2"></td>		
+colspan		跨列合并，目标单元格最左侧		<td colspan="2"></td>
+
+表格属性
+align		left,center,right	对齐方式						<table align="center">		网页中央对齐
+border		1或""			边框							<table border="1">		有边框
+cellpadding	像素				单元格边缘和内容间的空白		<table cellpadding="20">	默认1像素
+cellspacing	像素				单元格间的空白				<table cellspacing="0">	默认2像素
+width/height	像素或百分比		表格宽度/高度					<table width="500">
+
+
+
+
+
+列表
+<ul>		无序列表			<ul></ul>		<ul>中只能有<li>
+<ol>		有序列表			<ol></ol>		<ol>中只能有<li>
+<li>			列表项			<li></li>			<li>里可以有其他元素
+
+<dl>		自定义列表		<dl></dl>		<dl>中只能有<dt>和<dd>
+<dt>		项目/名字			<dt></dt>
+<dd>		描述项目/名字		<dd></dd>
+											<dl>
+												<dt>名字</dt>
+												<dd>名字解释1</dd>
+												<dd>名字解释2</dd>
+											</dl>
+
+表单
+
+<form>		表单域		<form action="xxx.php" method="post" name="123"></form>
+action		url地址
+method		get/post
+name		名称
+
+<input>		输入表单元素
+type属性
+	<input type="text">
+	text文本框显示，password文本框显示圆点
+	radio单选，checkbox复选框
+	submit提交按钮，reset重置按钮
+	button普通按钮，file文件上传
+name属性
+	<input type="text" name="username">
+	input元素的名称，后端使用
+value属性
+	<input type="text" name="username" value="输入用户名">
+	规定input元素的值，后端使用
+checked属性
+	<input type="radio" name="sex" value="男" checked="checked">
+	规定input元素被选中后刷新仍选中，针对单选和复选
+maxlength属性
+	<input type="text" name="username" value="输入用户名" maxlength="10">
+	规定输入字段的最大长度
+
+<label>		绑定一个表单元素，点击<label>标签时，光标会转移到对应表单元素		<label></label>	for对应id
+			<lable for="sex">男</label>
+			<input type="radio" name="sex" id="sex">
+
+<select>		下拉表单元素		<select></select>
+			<select>
+				<option>选项1</option>
+				<option>选项2</option>
+				<option selected="selected">选项3</option>		该选项默认选中
+			</select>
+
+<textarea>	文本域元素		<textarea></textarea>
+			<textarea rows="3" cols="20">
+				文本内容
+			</textarea>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
